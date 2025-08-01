@@ -1,4 +1,4 @@
-package com.example.todo.task;
+package com.example.todo.service.task;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
 package com.example.todo.repository.task;
 
-import com.example.todo.task.TaskEntity;
-import com.example.todo.task.TaskSearchEntity;
+import com.example.todo.service.task.TaskEntity;
+import com.example.todo.service.task.TaskSearchEntity;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -12,8 +12,7 @@ public interface TaskRepository {
 
     @Select("""
             <script>
-                SELECT id, summary, description, status
-                FROM tasks
+                SELECT * FROM tasks
                 <where>
                     <if test='condition.summary != null and !condition.summary.isBlank()'>
                         summary LIKE CONCAT('%', #{condition.summary},'%')
@@ -40,13 +39,11 @@ public interface TaskRepository {
     void insert(@Param("task") TaskEntity newEntity);
 
     @Update("""
-            UPDATE tasks
-            SET
+            UPDATE tasks SET
                summary      = #{task.summary},
                description  = #{task.description},
                status       = #{task.status}
-            WHERE
-               id = #{task.id}
+            WHERE id = #{task.id}
             """)
     void update(@Param("task") TaskEntity entity);
 
