@@ -1,4 +1,4 @@
-package com.example.todo.task;
+package com.example.todo.service.task;
 
 public record TaskEntity(
         Long id,

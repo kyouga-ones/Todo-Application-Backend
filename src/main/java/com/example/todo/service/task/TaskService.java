@@ -1,4 +1,4 @@
-package com.example.todo.task;
+package com.example.todo.service.task;
 
 import com.example.todo.repository.task.TaskRepository;
 import lombok.RequiredArgsConstructor;
