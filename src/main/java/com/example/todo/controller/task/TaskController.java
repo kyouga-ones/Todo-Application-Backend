@@ -32,9 +32,11 @@ public class TaskController {
     }
 
     @PostMapping
-    public void create(@Validated com.example.todo.controller.task.TaskForm form, BindingResult bindingResult, Model model) {
+    public void create(@Validated @RequestBody TaskForm form, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            throw new IllegalArgumentException("Validation error");
+        }
         taskService.create(form.toEntity());
-
     }
 
     @PutMapping("{id}")
